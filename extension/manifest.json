@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Aegis Password Manager & Auto-Fill",
+  "version": "1.0.0",
+  "description": "Secure 1-click password auto-fill powered by Aegis AES-256 Vault",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Aegis Auto-Fill"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content/content.js"]
+    }
+  ]
+}
